@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "lucasabelcorrea.com.github.todolist"
+    namespace = "LucasABelCorrea.com.github.todolist"
     compileSdk = 37
 
     defaultConfig {
-        applicationId = "lucasabelcorrea.com.github.todolist"
+        applicationId = "LucasABelCorrea.com.github.todolist"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
@@ -52,6 +52,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.material.icons.core)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
