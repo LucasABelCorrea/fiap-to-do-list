@@ -1,46 +1,46 @@
 package LucasABelCorrea.com.github.todolist.ui
 
-import LucasABelCorrea.com.github.todolist.data.Tarefa
-import LucasABelCorrea.com.github.todolist.util.combinarDataHora
-import LucasABelCorrea.com.github.todolist.util.extrairDataDoDatePicker
-import LucasABelCorrea.com.github.todolist.util.paraMillisUtcDoDatePicker
-import androidx.compose.foundation.layout.Row
-import androidx.compose.material3.DatePicker
-import androidx.compose.material3.DatePickerDialog
-import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.Switch
-import androidx.compose.material3.TextButton
-import androidx.compose.material3.TimePicker
-import androidx.compose.material3.rememberDatePickerState
-import androidx.compose.material3.rememberTimePickerState
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.window.Dialog
-import java.util.Calendar
-import LucasABelCorrea.com.github.todolist.viewmodel.TarefaViewModel
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Button
+import androidx.compose.material3.DatePicker
+import androidx.compose.material3.DatePickerDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.TimePicker
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.rememberDatePickerState
+import androidx.compose.material3.rememberTimePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Dialog
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import LucasABelCorrea.com.github.todolist.data.Tarefa
+import LucasABelCorrea.com.github.todolist.util.combinarDataHora
+import LucasABelCorrea.com.github.todolist.util.extrairDataDoDatePicker
+import LucasABelCorrea.com.github.todolist.util.paraMillisUtcDoDatePicker
+import LucasABelCorrea.com.github.todolist.viewmodel.TarefaViewModel
+import java.util.Calendar
 
 @Composable
 fun FormularioTarefaScreen(
@@ -60,10 +60,10 @@ fun FormularioTarefaScreen(
         dataHoraInicial = tarefaExistente?.dataHora,
         onSalvar = { titulo, descricao, dataHora ->
             if (tarefaId == 0) {
-                viewModel.inserir(Tarefa(titulo = titulo, descricao = descricao))
+                viewModel.inserir(Tarefa(titulo = titulo, descricao = descricao, dataHora = dataHora))
             } else {
                 tarefaExistente?.let {
-                    viewModel.atualizar(it.copy(titulo = titulo, descricao = descricao))
+                    viewModel.atualizar(it.copy(titulo = titulo, descricao = descricao, dataHora = dataHora))
                 }
             }
             onVoltar()
@@ -186,7 +186,6 @@ fun FormularioTarefaContent(
                 modifier = Modifier.fillMaxWidth(),
                 minLines = 3
             )
-
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
